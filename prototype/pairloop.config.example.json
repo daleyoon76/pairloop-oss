@@ -1,0 +1,21 @@
+{
+  "$schema": "./pairloop.config.schema.json",
+  "project": {
+    "name": "my-app",
+    "bugPrefix": "BUG"
+  },
+  "watch": {
+    "pingUrl": "http://localhost:3000/api/ping",
+    "gitBranch": "main"
+  },
+  "test": {
+    "command": "npx playwright test e2e/smoke.spec.ts",
+    "devServerCommand": "npm run dev",
+    "headless": true,
+    "captureOnFailure": true
+  },
+  "intervals": {
+    "pingSec": 30,
+    "gitSec": 180
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "pairloop Config",
+  "description": "pairloop 런타임 설정. 스킬 6개가 이 파일을 읽어 하드코딩 값 대신 사용한다.",
+  "type": "object",
+  "required": ["project", "watch", "test"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "프로젝트 식별자. 버그 ID·보고서에 표기된다. (영문, 공백 없이)"
+        },
+        "bugPrefix": {
+          "type": "string",
+          "default": "BUG",
+          "description": "버그 ID 접두사. 기본값: BUG"
+        }
+      }
+    },
+    "watch": {
+      "type": "object",
+      "required": ["pingUrl", "gitBranch"],
+      "properties": {
+        "pingUrl": {
+          "type": "string",
+          "description": "배포 감지용 ping 엔드포인트 URL. GET 요청 시 { commit: string } 반환 필요."
+        },
+        "gitBranch": {
+          "type": "string",
+          "description": "감시할 git 브랜치 이름."
+        }
+      }
+    },
+    "test": {
+      "type": "object",
+      "required": ["command"],
+      "properties": {
+        "command": {
+          "type": "string",
+          "description": "E2E 테스트 실행 명령. pair-watch가 이 명령을 실행한다."
+        },
+        "headless": {
+          "type": "boolean",
+          "default": true,
+          "description": "브라우저 창 표시 여부. true = 안 띄움(기본, 빠름), false = 창 표시(눈으로 확인 가능, 느림)"
+        },
+        "captureOnFailure": {
+          "type": "boolean",
+          "default": true,
+          "description": "실패 시 trace·screenshot·video 자동 저장 여부. true(기본)면 pair-watch가 테스트 명령에 --trace=retain-on-failure --screenshot=only-on-failure --video=retain-on-failure를 자동 추가한다. 결과는 Playwright 기본 출력 폴더(test-results/)에 저장되며, 실패한 케이스만 보관된다. 사후에 npx playwright show-trace 로 재생 가능."
+        },
+        "devServerCommand": {
+          "type": "string",
+          "description": "테스트 전 로컬 개발 서버를 자동으로 시작하는 명령. (예: npm run dev) 생략 시 서버가 이미 실행 중이어야 한다."
+        }
+      }
+    },
+    "intervals": {
+      "type": "object",
+      "properties": {
+        "pingSec": {
+          "type": "number",
+          "default": 30,
+          "description": "배포 감지 ping 주기(초). 기본값: 30"
+        },
+        "gitSec": {
+          "type": "number",
+          "default": 180,
+          "description": "git 변경 감지 주기(초). 기본값: 180"
+        }
+      }
+    }
+  }
+}
