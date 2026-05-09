@@ -20,16 +20,20 @@
 
 사용자가 해야 하는 일은 3가지뿐입니다.
 
-### 1. ZIP 다운로드 + 프로젝트 루트에서 Claude Code 실행
+### 1. 이 레포 clone (또는 ZIP 다운로드) + 프로젝트 루트에서 Claude Code 실행
 
-`pairloop-v0.8.17.zip`을 컴퓨터 어디든 받아둡니다 (보통 `~/Downloads`). 이메일·Slack·USB 어디든 무관. 그다음 테스트 대상 프로젝트의 루트 폴더에서 Claude Code를 실행합니다.
+```bash
+git clone https://github.com/daleyoon76/pairloop-oss.git ~/Downloads/pairloop
+```
+
+또는 GitHub 페이지의 **Code → Download ZIP**으로 받아 `~/Downloads/pairloop`에 풀어둡니다. 그다음 테스트 대상 프로젝트의 루트 폴더에서 Claude Code를 실행합니다.
 
 ### 2. 창 A에 자연어 한 줄 붙여넣기 (첫 설치)
 
 첫 설치 시점에는 `~/.claude/skills/`에 `pairloop-install`이 아직 없어 슬래시 명령이 작동하지 않습니다. 아래 자연어 박스를 그대로 복사해 창 A에 붙여넣으세요.
 
 ```
-~/Downloads에 받아둔 pairloop-v0.8.17.zip을 풀어서 이 프로젝트(현재 폴더)에 pairloop를 처음 설치해줘. 스킬 6개를 ~/.claude/skills/에 복사하고, 템플릿 5개와 schema는 이 프로젝트의 pairloop/ 폴더에 복사한 뒤, 6가지 질문(프로젝트명·배포URL·브랜치·테스트명령·devServer·브라우저표시)에 답하면 pairloop.config.json을 만들고 곧바로 pair-watch 감시 루프를 시작해줘.
+~/Downloads/pairloop/prototype 안의 스킬과 템플릿으로 이 프로젝트(현재 폴더)에 pairloop를 처음 설치해줘. 스킬 6개를 ~/.claude/skills/에 복사하고, 템플릿 5개와 schema는 이 프로젝트의 pairloop/ 폴더에 복사한 뒤, 6가지 질문(프로젝트명·배포URL·브랜치·테스트명령·devServer·브라우저표시)에 답하면 pairloop.config.json을 만들고 곧바로 pair-watch 감시 루프를 시작해줘.
 ```
 
 이 한 번으로 다음이 자동 처리됩니다.
@@ -132,15 +136,12 @@ prototype/
 │   ├── to-do.md                PPSSTT 6자리 번호 체계
 │   ├── result.md               창A 기록 / 창B 읽기 (공유 신호 파일)
 │   └── test-scenario.md        ★ 테스트 시나리오 정의 (핵심 파일)
-├── docs/
-│   ├── quickstart.md               3분 설치 가이드 (/pairloop-install 흐름)
-│   ├── algorithm-guide.md          3-way 분류 · pair-hand · known-pitfalls 알고리즘
-│   ├── dual-loop-pattern.md        창A/창B 이중 루프 패턴
-│   ├── ping-endpoint.md            /api/ping 구현 가이드
-│   └── session-continuity.md       MD 3종 운영 규칙
-└── scripts/
-    ├── install-pairloop.sh
-    └── install-pairloop.ps1
+└── docs/
+    ├── quickstart.md               3분 설치 가이드 (/pairloop-install 흐름)
+    ├── algorithm-guide.md          3-way 분류 · pair-hand · known-pitfalls 알고리즘
+    ├── dual-loop-pattern.md        창A/창B 이중 루프 패턴
+    ├── ping-endpoint.md            /api/ping 구현 가이드
+    └── session-continuity.md       MD 3종 운영 규칙
 ```
 
 설치 후 고객 프로젝트:
