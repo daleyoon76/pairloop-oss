@@ -4,6 +4,8 @@
 
 # pairloop
 
+<img src="assets/demo.gif" alt="pairloop demo" width="800">
+
 > Claude Code 위에 얹는 **장기 프로젝트 운영 레이어**. 한 창은 감시(watch), 다른 창은 수정(fix), 세션 종료 시 인계(hand). 1~2인 개발자를 위한 Claude Code 운영 스킬·템플릿 모음입니다.
 
 **현재 버전**: v0.8.17 · **라이선스**: [MIT](LICENSE)
